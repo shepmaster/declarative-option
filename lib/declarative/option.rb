@@ -21,7 +21,7 @@ module Declarative
     end
 
     def lambda_for_proc(value, options)
-      return ->(context, *args) { context.instance_exec(*args, &value) } if options[:instance_exec]
+      return ->(context, *args, **kwargs) { context.instance_exec(*args, **kwargs, &value) } if options[:instance_exec]
       value
     end
 
